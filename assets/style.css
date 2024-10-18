@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(25, 0, 255);
+}
+
+.container{
+    margin: 0 auto;
+    width: 86%;
+    background-color: rgb(25, 0, 255);
+    height: 100vh;
+}
+
+.conceito{
+    display: flex;
+    font-size: 15px;
+    padding-top: 11.3em;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    
+}
+
+.conceito p{
+    max-width: 80%;
+}
+
+.descricao{
+    display: flex;
+    justify-content: space-around;
+    height: 58vh;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.divisoes{
+    display: flex;
+    flex-direction: column;
+    width: 11em;
+    background-color: whitesmoke;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.315);
+}
+
+.explicacao{
+    width: 9em;
+    font-weight: 540;
+}
+
+.icone{
+    display: flex;
+    height: 50px;
+    margin: 15px 0px;
+}
+
+.titulo{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: rgb(25, 0, 255);
+}
