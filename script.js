@@ -1,8 +1,6 @@
-// Função que descreve a personalidade com base nos fatores calculados
 function descreverPersonalidade(neuroticismo, conscienciosidade, extroversao, agradabilidade, abertura) {
     let descricao = "\nDescrição dos fatores de personalidade:\n";
 
-    // Descrição para o fator Neuroticismo
     descricao += "Neuroticismo: ";
     if (neuroticismo <= 60) {
         descricao += "Você tende a ser emocionalmente estável e resiliente.";
@@ -13,7 +11,6 @@ function descreverPersonalidade(neuroticismo, conscienciosidade, extroversao, ag
     }
     descricao += "\n";
 
-    // Descrição para o fator Conscienciosidade
     descricao += "Conscienciosidade: ";
     if (conscienciosidade <= 60) {
         descricao += "Você é menos preocupado com a organização e responsabilidade.";
@@ -24,7 +21,6 @@ function descreverPersonalidade(neuroticismo, conscienciosidade, extroversao, ag
     }
     descricao += "\n";
 
-    // Descrição para o fator Extroversão
     descricao += "Extroversão: ";
     if (extroversao <= 60) {
         descricao += "Você tende a ser introvertido e prefere a solidão ou interações em grupos pequenos.";
@@ -35,7 +31,6 @@ function descreverPersonalidade(neuroticismo, conscienciosidade, extroversao, ag
     }
     descricao += "\n";
 
-    // Descrição para o fator Agradabilidade
     descricao += "Agradabilidade: ";
     if (agradabilidade <= 60) {
         descricao += "Você pode ser mais cético e menos propenso a confiar nas pessoas.";
@@ -46,7 +41,6 @@ function descreverPersonalidade(neuroticismo, conscienciosidade, extroversao, ag
     }
     descricao += "\n";
 
-    // Descrição para o fator Abertura
     descricao += "Abertura: ";
     if (abertura <= 60) {
         descricao += "Você é mais tradicional e prefere o familiar ao novo e inovador.";
@@ -57,48 +51,41 @@ function descreverPersonalidade(neuroticismo, conscienciosidade, extroversao, ag
     }
     descricao += "\n";
 
-    // Exibe a descrição final em um alerta
+   
     alert(descricao);
 }
 
-// Função para validar a resposta do usuário (entre 0 e 10)
 function validarResposta(pergunta) {
     let resposta = prompt(pergunta + " (Digite um valor entre 0 e 10): ");
     if (resposta === null) {
-        return null; // Se o usuário clicar em "Cancelar", retorna null
+        return null; 
     }
 
-    // Converte a resposta para um número inteiro e verifica se está dentro do intervalo permitido
     resposta = parseInt(resposta);
     if (isNaN(resposta) || resposta < 0 || resposta > 10) {
         alert("Resposta inválida. Por favor, digite um valor entre 0 e 10.");
-        return validarResposta(pergunta); // Solicita a resposta novamente se for inválida
+        return validarResposta(pergunta);
     }
 
-    return resposta; // Retorna a resposta válida
+    return resposta;
 }
 
-// Função para calcular a pontuação de um fator de personalidade
 function calcularFator(respostas, inicio, fim, maxPontos) {
     let soma = 0;
-    // Soma todas as respostas dentro do intervalo especificado
     for (let i = inicio; i < fim; i++) {
         soma += respostas[i];
     }
-    // Calcula a pontuação em forma de porcentagem
     return (soma / maxPontos) * 100;
 }
 
-// Função principal que inicia o teste de personalidade
 function iniciarTeste() {
-    // Pergunta ao usuário se deseja iniciar o teste
+   
     let iniciar = confirm("Bem-vindo ao Teste de Personalidade dos Cinco Fatores! Deseja iniciar?");
     if (!iniciar) {
         alert("Obrigado! Até a próxima.");
-        return; // Encerra se o usuário não quiser iniciar
+        return;
     }
 
-    // Array com todas as perguntas do teste
     const perguntas = [
         "Me preocupo com as coisas",
         "Me irrito facilmente",
@@ -127,25 +114,22 @@ function iniciarTeste() {
         "Vejo beleza em coisas que os outros não vêem"
     ];
 
-    let respostas = []; // Array para armazenar as respostas do usuário
-    // Loop para percorrer todas as perguntas
+    let respostas = [];
     for (let i = 0; i < perguntas.length; i++) {
         let resposta = validarResposta(perguntas[i]);
         if (resposta === null) {
             alert("Teste cancelado. Obrigado por participar!");
-            return; // Encerra o teste se o usuário clicar em "Cancelar"
+            return;
         }
-        respostas.push(resposta); // Adiciona a resposta ao array
+        respostas.push(resposta);
     }
 
-    // Calcula as pontuações para cada fator de personalidade
     const neuroticismo = calcularFator(respostas, 0, 5, 50);
     const conscienciosidade = calcularFator(respostas, 5, 10, 50);
     const extroversao = calcularFator(respostas, 10, 15, 50);
     const agradabilidade = calcularFator(respostas, 15, 20, 50);
     const abertura = calcularFator(respostas, 20, 25, 50);
 
-    // Exibe as pontuações finais em um alerta
     alert(`Sua pontuação nos cinco fatores de personalidade em porcentagem é a seguinte:\n
         Neuroticismo: ${neuroticismo.toFixed(2)}%\n
         Conscienciosidade: ${conscienciosidade.toFixed(2)}%\n
@@ -153,17 +137,14 @@ function iniciarTeste() {
         Agradabilidade: ${agradabilidade.toFixed(2)}%\n
         Abertura: ${abertura.toFixed(2)}%\n`);
 
-    // Chama a função para descrever a personalidade com base nas pontuações
     descreverPersonalidade(neuroticismo, conscienciosidade, extroversao, agradabilidade, abertura);
 
-    // Pergunta ao usuário se ele deseja refazer o teste
     let continuar = confirm("Obrigado por fazer o teste! Deseja fazê-lo novamente?");
     if (continuar) {
-        iniciarTeste(); // Reinicia o teste se o usuário quiser refazer
+        iniciarTeste(); 
     } else {
         alert("Obrigado por participar do Teste de Personalidade! Até a próxima.");
     }
 }
 
-// Chama a função iniciarTeste quando a página for carregada
 window.onload = iniciarTeste;
